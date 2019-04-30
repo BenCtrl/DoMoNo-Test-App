@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Connect to MongoDB
 mongoose
   .connect(
-    'mongodb://mongo:27017/docker-node-mongo',
+    'mongodb://mongo:27017/docker-node-mongo',      //the container holding the mongodb will have a service name of "mongo" (the host-name maps with the container service name)
     { useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected'))

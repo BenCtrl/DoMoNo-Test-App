@@ -1,15 +1,19 @@
 version: '3'
 services:
-  app:
+  app-service:
     container_name: docker-node-mongo
-    restart: always
-    build: .
-    ports:
+    restart: always                       #if it fails, always restart
+    build: .                              #build takes a directory to a docker file as input (will look in directory for Dockerfile and build image in reference to that file)
+    ports: 
       - '80:3000'
-    links:
-      - mongo
-  mongo:
+    links:                                 #Links two services together
+      - mongo-service
+  mongo-service:
     container_name: mongo
-    image: mongo
+    image: mongo                          #We're not using a Dockerfile to build this service, so we pull mongo from docker hub
     ports:
       - '27017:27017'
+
+
+#build = Custom image build
+#image = Using a pre-made image from docker Hub (can be custom made & pushed)
